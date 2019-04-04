@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Form from './form'
+import FormWithStates from './FormWithStates'
 import FormModel from './FormModel';
 import FormTypes from './FormTypes';
 import './App.css';
@@ -43,7 +43,7 @@ class App extends Component {
     ];
     return (
       <div className="App">
-        <Form forms={forms} />
+        <FormWithStates forms={forms} />
       </div>
     );
   }

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import FormModel from "../FormModel";
 import FormTypes from "../FormTypes";
 
-export default class Form extends Component {
+export default class FormWithStates extends Component {
   renderForms(forms) {
     return forms.map(({ type, text, action }, index) =>
       <input
@@ -26,6 +27,6 @@ export default class Form extends Component {
   }
 }
 
-Form.propTypes = {
+FormWithStates.propTypes = {
   forms: PropTypes.arrayOf(PropTypes.instanceOf(FormModel)).isRequired,
 };
