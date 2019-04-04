@@ -29,9 +29,11 @@ export default class FormWithReferences extends Component {
 }
 
 FormWithReferences.propTypes = {
-  forms: PropTypes.arrayOf(PropTypes.instanceOf(FormModel)).isRequired,
+  forms: PropTypes.arrayOf(
+    PropTypes.instanceOf(FormModel).isRequired,
+  ).isRequired,
   references: PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-  ])),
+    PropTypes.func.isRequired,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }).isRequired,
+  ])).isRequired,
 };

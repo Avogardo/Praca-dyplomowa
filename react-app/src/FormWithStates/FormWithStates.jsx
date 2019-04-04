@@ -28,5 +28,7 @@ export default class FormWithStates extends Component {
 }
 
 FormWithStates.propTypes = {
-  forms: PropTypes.arrayOf(PropTypes.instanceOf(FormModel)).isRequired,
+  forms: PropTypes.arrayOf(
+    PropTypes.instanceOf(FormModel).isRequired,
+  ).isRequired,
 };
