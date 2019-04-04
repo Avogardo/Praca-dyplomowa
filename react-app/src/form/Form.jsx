@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FormModel from "../FormModel";
+import FormTypes from "../FormTypes";
 
 export default class Form extends Component {
   renderForms(forms) {
-    return forms.map(({ type, text, action }, index) => <input key={text + index} type={type} value={text} onChange={action} />);
+    return forms.map(({ type, text, action }, index) =>
+      <input
+        key={text + index}
+        type={type}
+        value={text}
+        onChange={type !== FormTypes.submit ? action : () => {}}
+        onClick={type === FormTypes.submit ? action : () => {}}
+      />
+    );
   }
 
   render() {
@@ -12,9 +21,6 @@ export default class Form extends Component {
     return (
       <form>
         {this.renderForms(forms)}
-        <input />
-        <input type="number" />
-        <input type="submit" value="Submit" />
       </form>
     );
   }
