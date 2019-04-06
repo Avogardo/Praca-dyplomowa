@@ -11,13 +11,26 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { text: 'This is an input', number: 0 };
+    this.state = { text: 'This is an input', number: 0, tableData: [[]], };
     this.onTextChange = this.onTextChange.bind(this);
     this.onNumberChange = this.onNumberChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.textInput = React.createRef();
     this.numberInput = React.createRef();
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3001/table', {
+      method: "GET",
+    })
+    .then(data => data.json())
+    .then(({ tableData }) => {
+      console.log(tableData);
+      this.setState({
+        tableData,
+      });
+    });
   }
 
   onTextChange(event) {
