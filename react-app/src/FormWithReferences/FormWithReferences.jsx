@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import FormModel from "../FormModel";
 import FormTypes from "../FormTypes";
+import './Form.css';
 
 export default class FormWithReferences extends Component {
   renderForms(forms, references) {
@@ -21,9 +22,9 @@ export default class FormWithReferences extends Component {
   render() {
     const { forms, references } = this.props;
     return (
-      <form>
-        {this.renderForms(forms, references)}
-      </form>
+        <form>
+          {this.renderForms(forms, references)}
+        </form>
     );
   }
 }

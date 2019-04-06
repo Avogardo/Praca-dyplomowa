@@ -66,8 +66,10 @@ class App extends Component {
     const references = [this.textInput, this.numberInput];
     return (
       <div className="App">
-        <FormWithStates forms={formsWithStates} />
-        <FormWithReferences forms={formsWithProps} references={references} />
+        <div className="form-wrapper">
+          <FormWithStates forms={formsWithStates} />
+          <FormWithReferences forms={formsWithProps} references={references} />
+        </div>
         <Table rows={tableData} />
       </div>
     );
