@@ -21,9 +21,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/table', {
-      method: "GET",
-    })
+    fetch('http://localhost:3001/table')
     .then(data => data.json())
     .then(({ tableData }) => {
       console.log(tableData);
@@ -55,7 +53,7 @@ class App extends Component {
   }
 
   render() {
-    const { text, number } = this.state;
+    const { text, number, tableData } = this.state;
     const formsWithStates = [
       new FormModel(FormTypes.text, text, this.onTextChange),
       new FormModel(FormTypes.number, number, this.onNumberChange),
@@ -71,7 +69,7 @@ class App extends Component {
       <div className="App">
         <FormWithStates forms={formsWithStates} />
         <FormWithReferences forms={formsWithProps} references={references} />
-        <Table />
+        <Table rows={tableData} />
       </div>
     );
   }

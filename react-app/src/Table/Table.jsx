@@ -42,12 +42,18 @@ const Table = rows => <table>
 </table>;
 
 Table.defaultProps = {
-  rows: [],
+  rows: [[]],
 };
 
 Table.propTypes = {
   rows: PropTypes.arrayOf(
-    PropTypes.number,
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool,
+        PropTypes.number,
+      ]),
+    ),
   ),
 };
 
