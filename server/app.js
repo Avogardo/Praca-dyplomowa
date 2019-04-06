@@ -10,7 +10,7 @@ app.use(cors());
 
 app.use((req, res, next) => {
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -28,8 +28,8 @@ app.use((req, res, next) => {
 
 require("./api/table-api")(app);
 
-app.listen(process.env.PORT || 8081, () => {
-  console.log('app now listening for requests on port 8081');
+app.listen(process.env.PORT || 3001, () => {
+  console.log('app now listening for requests on port 3001');
 });
 
 module.exports = app;
