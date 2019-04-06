@@ -6,6 +6,8 @@ const Table = ({ rows }) => {
   const getCells = cells => cells.map((cell, index) => {
     if (cell === true) {
       return <td key={`${index}cell`}><input type="checkbox" /></td>;
+    } else if (typeof cell === 'string' && cell.includes('.png')) {
+      return <td key={`${index}cell`}><img src={cell} alt="js logo" /></td>;
     }
     return <td key={`${index}cell`}>{cell}</td>;
   });
@@ -16,11 +18,13 @@ const Table = ({ rows }) => {
 
   if (rows[0].length) {
     return (
-      <table>
-        <tbody>
-          {getRows(rows)}
-        </tbody>
-      </table>
+      <div className="table-wrapper">
+        <table>
+          <tbody>
+            {getRows(rows)}
+          </tbody>
+        </table>
+      </div>
     );
   }
   return <p>loading...</p>;
