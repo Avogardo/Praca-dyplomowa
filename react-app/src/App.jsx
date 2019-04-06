@@ -4,6 +4,7 @@ import FormWithStates from './FormWithStates'
 import FormWithReferences from "./FormWithReferences";
 import FormModel from './FormModel';
 import FormTypes from './FormTypes';
+import Table from "./Table";
 import './App.css';
 
 class App extends Component {
@@ -53,11 +54,11 @@ class App extends Component {
       new FormModel(FormTypes.submit, "Submit", this.onSubmit),
     ];
     const references = [this.textInput, this.numberInput];
-    console.log(formsWithProps);
     return (
       <div className="App">
         <FormWithStates forms={formsWithStates} />
         <FormWithReferences forms={formsWithProps} references={references} />
+        <Table />
       </div>
     );
   }
