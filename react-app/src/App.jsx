@@ -24,7 +24,6 @@ class App extends Component {
     fetch('http://localhost:3001/table')
     .then(data => data.json())
     .then(({ tableData }) => {
-      console.log(tableData);
       this.setState({
         tableData,
       });

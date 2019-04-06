@@ -1,45 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Table = rows => <table>
-  <tbody>
-    <tr>
-      <th>Company</th>
-      <th>Contact</th>
-      <th>Country</th>
-    </tr>
-    <tr>
-      <td>Alfreds Futterkiste</td>
-      <td>Maria Anders</td>
-      <td>Germany</td>
-    </tr>
-    <tr>
-      <td>Centro comercial Moctezuma</td>
-      <td>Francisco Chang</td>
-      <td>Mexico</td>
-    </tr>
-    <tr>
-      <td>Ernst Handel</td>
-      <td>Roland Mendel</td>
-      <td>Austria</td>
-    </tr>
-    <tr>
-      <td>Island Trading</td>
-      <td>Helen Bennett</td>
-      <td>UK</td>
-    </tr>
-    <tr>
-      <td>Laughing Bacchus Winecellars</td>
-      <td>Yoshi Tannamuri</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <td>Magazzini Alimentari Riuniti</td>
-      <td>Giovanni Rovelli</td>
-      <td>Italy</td>
-    </tr>
-  </tbody>
-</table>;
+const Table = ({ rows }) => {
+  const getCells = cells => cells.map((cell, index) =>
+    <td key={`${index}cell`}>{cell}</td>);
+
+  const getRows = (rows) => rows.map((row, index) => <tr key={`${index}row`}>
+    {getCells(row)}
+  </tr>);
+
+  if (rows[0].length) {
+    return (
+      <table>
+        <tbody>
+          {getRows(rows)}
+        </tbody>
+      </table>
+    );
+  }
+  return <p>loading...</p>;
+};
 
 Table.defaultProps = {
   rows: [[]],
