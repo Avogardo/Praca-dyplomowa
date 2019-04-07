@@ -83,23 +83,25 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/form-with-states">form with states</Link>
-            </li>
-            <li>
-              <Link to="/form-with-references">form with references</Link>
-            </li>
-            <li>
-              <Link to="/server-table">server table</Link>
-            </li>
-            <li>
-              <Link to="/big-table">server table</Link>
-            </li>
-          </ul>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/form-with-states">form with states</Link>
+              </li>
+              <li>
+                <Link to="/form-with-references">form with references</Link>
+              </li>
+              <li>
+                <Link to="/server-table">server table</Link>
+              </li>
+              <li>
+                <Link to="/big-table">server table</Link>
+              </li>
+            </ul>
+          </nav>
 
           <div className="form-wrapper">
             <Route
@@ -110,7 +112,9 @@ class App extends Component {
             <Route
               exact
               path="/form-with-references"
-              render={(props) => <FormWithReferences {...props} forms={formsWithProps} references={references} />}
+              render={(props) =>
+                <FormWithReferences {...props} forms={formsWithProps} references={references}
+              />}
             />
           </div>
           <Route path="/server-table" render={(props) => <Table {...props} rows={tableData} />} />
