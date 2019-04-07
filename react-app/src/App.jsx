@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-} from 'react-router-dom';
+import { BrowserRouter as Router,  Route } from 'react-router-dom';
 
 import FormWithStates from './FormWithStates'
 import FormWithReferences from "./FormWithReferences";
 import FormModel from './FormModel';
 import FormTypes from './FormTypes';
 import Table from "./Table";
+import Navigation from "./Navigation";
 import './App.css';
 
 class App extends Component {
@@ -83,26 +80,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/form-with-states">form with states</Link>
-              </li>
-              <li>
-                <Link to="/form-with-references">form with references</Link>
-              </li>
-              <li>
-                <Link to="/server-table">server table</Link>
-              </li>
-              <li>
-                <Link to="/big-table">server table</Link>
-              </li>
-            </ul>
-          </nav>
-
+          <Navigation />
           <div className="form-wrapper">
             <Route
               exact
