@@ -64,6 +64,17 @@ class App extends Component {
       new FormModel(FormTypes.submit, "Submit", this.onSubmit),
     ];
     const references = [this.textInput, this.numberInput];
+
+    const bigTableData = [];
+    for (let i = 0; i < 30; i++) { // 30000 is fine
+      bigTableData.push([
+        'title',
+        true,
+        54,
+        "https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png",
+      ]);
+    }
+
     return (
       <div className="App">
         <div className="form-wrapper">
@@ -71,6 +82,7 @@ class App extends Component {
           <FormWithReferences forms={formsWithProps} references={references} />
         </div>
         <Table rows={tableData} />
+        <Table rows={bigTableData} />
       </div>
     );
   }
