@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+} from 'react-router-dom';
 
 import FormWithStates from './FormWithStates'
 import FormWithReferences from "./FormWithReferences";
@@ -76,14 +81,42 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <div className="form-wrapper">
-          <FormWithStates forms={formsWithStates} />
-          <FormWithReferences forms={formsWithProps} references={references} />
+      <Router>
+        <div className="App">
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/form-with-states">form with states</Link>
+            </li>
+            <li>
+              <Link to="/form-with-references">form with references</Link>
+            </li>
+            <li>
+              <Link to="/server-table">server table</Link>
+            </li>
+            <li>
+              <Link to="/big-table">server table</Link>
+            </li>
+          </ul>
+
+          <div className="form-wrapper">
+            <Route
+              exact
+              path="/form-with-states"
+              render={(props) => <FormWithStates {...props} forms={formsWithStates} />}
+            />
+            <Route
+              exact
+              path="/form-with-references"
+              render={(props) => <FormWithReferences {...props} forms={formsWithProps} references={references} />}
+            />
+          </div>
+          <Route path="/server-table" render={(props) => <Table {...props} rows={tableData} />} />
+          <Route path="/big-table" render={(props) => <Table {...props} rows={bigTableData} />} />
         </div>
-        <Table rows={tableData} />
-        <Table rows={bigTableData} />
-      </div>
+      </Router>
     );
   }
 }
