@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import './Table.css';
 
 class Table extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isVisible: true };
+
+    this.toggleTable = this.toggleTable.bind(this);
+  }
+
   getCells(cells) {
     return cells.map((cell, index) => {
       if (cell === true) {
@@ -22,18 +29,31 @@ class Table extends Component {
     );
   }
 
+  toggleTable() {
+    this.setState({ isVisible: !this.state.isVisible });
+  }
+
   render() {
     const { rows } = this.props;
+    const { isVisible } = this.state;
     return (
-      rows[0].length ?
-        <div className="table-wrapper">
-          <table>
-            <tbody>
-            {this.getRows(rows)}
-            </tbody>
-          </table>
-          <button>Hide table</button>
-        </div>
+      rows[0].length ? [
+        <button
+          key="showHideTableButton"
+          onClick={this.toggleTable}
+        >
+          {isVisible ? 'Hide' : 'Show'} table
+        </button>,
+          <div key="tableWithData" className="table-wrapper">
+            {isVisible &&
+              <table>
+                <tbody>
+                {this.getRows(rows)}
+                </tbody>
+              </table>
+            }
+          </div>,
+        ]
         :
         <p>loading...</p>
     );
