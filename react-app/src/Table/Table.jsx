@@ -34,16 +34,22 @@ class Table extends Component {
   }
 
   render() {
-    const { rows } = this.props;
+    const { rows, moveTableElement } = this.props;
     const { isVisible } = this.state;
     return (
       rows[0].length ? [
         <button
-          key="showHideTableButton"
-          onClick={this.toggleTable}
+          key="moveRow"
+          onClick={moveTableElement}
         >
-          {isVisible ? 'Hide' : 'Show'} table
+          Move row
         </button>,
+          <button
+            key="showHideTableButton"
+            onClick={this.toggleTable}
+          >
+            {isVisible ? 'Hide' : 'Show'} table
+          </button>,
           <div key="tableWithData" className="table-wrapper">
             {isVisible &&
               <table>
@@ -74,6 +80,7 @@ Table.propTypes = {
       ]),
     ),
   ),
+  moveTableElement: PropTypes.func.isRequired,
 };
 
 export default Table;
