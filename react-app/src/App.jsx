@@ -68,13 +68,22 @@ class App extends Component {
     const references = [this.textInput, this.numberInput];
 
     const bigTableData = [];
-    for (let i = 0; i < 30; i++) { // 30000 is fine
-      bigTableData.push([
-        'title',
-        true,
-        54,
-        "https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png",
-      ]);
+    for (let i = 0; i < 300; i++) { // 30000 is fine
+      if (i === 0) {
+        bigTableData.push([
+          'This is first item',
+          true,
+          1,
+          "https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png",
+        ]);
+      } else {
+        bigTableData.push([
+          'title',
+          true,
+          54,
+          "https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png",
+        ]);
+      }
     }
 
     return (
