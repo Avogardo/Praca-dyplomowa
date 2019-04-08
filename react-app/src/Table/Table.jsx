@@ -5,9 +5,47 @@ import './Table.css';
 class Table extends Component {
   constructor(props) {
     super(props);
-    this.state = { isVisible: true };
+    this.state = {
+      isVisible: true,
+      tableData: [[]],
+    };
 
     this.toggleTable = this.toggleTable.bind(this);
+    this.moveTableElement = this.moveTableElement.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.isBigTable) {
+      const tableData = [];
+      for (let i = 0; i < 300; i++) { // 30000 is fine
+        if (i === 0) {
+          tableData.push([
+            'This is first item',
+            true,
+            1,
+            "https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png",
+          ]);
+        } else {
+          tableData.push([
+            'title',
+            true,
+            54,
+            "https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png",
+          ]);
+        }
+      }
+      this.setState({
+        tableData,
+      });
+    } else {
+      fetch('http://localhost:3001/table')
+        .then(data => data.json())
+        .then(({ tableData }) => {
+          this.setState({
+            tableData,
+          });
+        });
+    }
   }
 
   getCells(cells) {
@@ -29,18 +67,26 @@ class Table extends Component {
     );
   }
 
+  moveTableElement() {
+    const { tableData } = this.state;
+    const firstRow = tableData.shift();
+    tableData.push(firstRow);
+    this.setState({
+      tableData
+    });
+  }
+
   toggleTable() {
     this.setState({ isVisible: !this.state.isVisible });
   }
 
   render() {
-    const { rows, moveTableElement } = this.props;
-    const { isVisible } = this.state;
+    const { isVisible, tableData } = this.state;
     return (
-      rows[0].length ? [
+      tableData[0].length ? [
         <button
           key="moveRow"
-          onClick={moveTableElement}
+          onClick={this.moveTableElement}
         >
           Move row
         </button>,
@@ -54,7 +100,7 @@ class Table extends Component {
             {isVisible &&
               <table>
                 <tbody>
-                {this.getRows(rows)}
+                {this.getRows(tableData)}
                 </tbody>
               </table>
             }
@@ -67,20 +113,11 @@ class Table extends Component {
 }
 
 Table.defaultProps = {
-  rows: [[]],
+  isBigTable: false,
 };
 
 Table.propTypes = {
-  rows: PropTypes.arrayOf(
-    PropTypes.arrayOf(
-      PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.bool,
-        PropTypes.number,
-      ]),
-    ),
-  ),
-  moveTableElement: PropTypes.func.isRequired,
+  isBigTable: PropTypes.bool,
 };
 
 export default Table;
