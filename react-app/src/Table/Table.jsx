@@ -12,6 +12,7 @@ class Table extends Component {
 
     this.toggleTable = this.toggleTable.bind(this);
     this.moveTableElement = this.moveTableElement.bind(this);
+    this.changeAllTexts = this.changeAllTexts.bind(this);
   }
 
   componentDidMount() {
@@ -76,6 +77,16 @@ class Table extends Component {
     });
   }
 
+  changeAllTexts() {
+    const { tableData } = this.state;
+    tableData.forEach(row => {
+      row[0] = String(Math.random());
+    });
+    this.setState({
+      tableData,
+    });
+  }
+
   toggleTable() {
     this.setState({ isVisible: !this.state.isVisible });
   }
@@ -90,24 +101,30 @@ class Table extends Component {
         >
           Move row
         </button>,
-          <button
-            key="showHideTableButton"
-            onClick={this.toggleTable}
-          >
-            {isVisible ? 'Hide' : 'Show'} table
-          </button>,
-          <div key="tableWithData" className="table-wrapper">
-            {isVisible &&
-              <table>
-                <tbody>
-                {this.getRows(tableData)}
-                </tbody>
-              </table>
-            }
-          </div>,
-        ]
-        :
-        <p>loading...</p>
+        <button
+          key="showHideTableButton"
+          onClick={this.toggleTable}
+        >
+          {isVisible ? 'Hide' : 'Show'} table
+        </button>,
+        <button
+          key="changeAllTextsButton"
+          onClick={this.changeAllTexts}
+        >
+          Change all texts
+        </button>,
+        <div key="tableWithData" className="table-wrapper">
+          {isVisible &&
+            <table>
+              <tbody>
+              {this.getRows(tableData)}
+              </tbody>
+            </table>
+          }
+        </div>,
+      ]
+      :
+      <p>loading...</p>
     );
   }
 }
