@@ -70,9 +70,9 @@ class Table extends Component {
   moveTableElement() {
     const { tableData } = this.state;
     const firstRow = tableData.shift();
-    tableData.push(firstRow);
+    tableData.splice(1, 0, firstRow);
     this.setState({
-      tableData
+      tableData,
     });
   }
 
