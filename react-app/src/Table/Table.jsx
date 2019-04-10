@@ -11,7 +11,7 @@ class Table extends Component {
   componentDidMount() {
     if (this.props.isBigTable) {
       const tableData = [];
-      for (let i = 0; i < 30; i++) { // 30000 is fine
+      for (let i = 0; i < 300; i++) { // 30000 is fine
         if (i === 0) {
           tableData.push([
             'This is first item',
@@ -44,9 +44,7 @@ class Table extends Component {
 
   selectRow = (rowIndex, cellIndex) => () => {
     const { tableData } = this.state;
-    console.log(rowIndex, cellIndex);
     tableData[rowIndex][cellIndex] = !tableData[rowIndex][cellIndex];
-
     this.setState({
       tableData,
     });
@@ -103,6 +101,16 @@ class Table extends Component {
     this.setState({ isVisible: !this.state.isVisible });
   }
 
+  removeOrAddRow = (addRow = false) => () => {
+    if (addRow) {
+      const { tableData } = this.state;
+      tableData.shift();
+      this.setState({
+        tableData,
+      });
+    }
+  }
+
   render() {
     const { isVisible, tableData } = this.state;
     return (
@@ -125,12 +133,18 @@ class Table extends Component {
         >
           Change all texts
         </button>,
-          <button
-            key="changePartiallyTextsButton"
-            onClick={this.changeTexts()}
-          >
-            Change partially text
-          </button>,
+        <button
+          key="changePartiallyTextsButton"
+          onClick={this.changeTexts()}
+        >
+          Change partially text
+        </button>,
+        <button
+          key="removeOrAddRow"
+          onClick={this.removeOrAddRow(true)}
+        >
+          Remove row
+        </button>,
         <div key="tableWithData" className="table-wrapper">
           {isVisible &&
             <table>
