@@ -11,18 +11,18 @@ class Table extends Component {
   componentDidMount() {
     if (this.props.isBigTable) {
       const tableData = [];
-      for (let i = 0; i < 300; i++) { // 30000 is fine
+      for (let i = 0; i < 30; i++) { // 30000 is fine
         if (i === 0) {
           tableData.push([
             'This is first item',
-            true,
+            false,
             1,
             "https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png",
           ]);
         } else {
           tableData.push([
             'title',
-            true,
+            false,
             54,
             "https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png",
           ]);
@@ -42,10 +42,22 @@ class Table extends Component {
     }
   }
 
-  getCells(cells) {
+  selectRow = (rowIndex, cellIndex) => () => {
+    const { tableData } = this.state;
+    console.log(rowIndex, cellIndex);
+    tableData[rowIndex][cellIndex] = !tableData[rowIndex][cellIndex];
+
+    this.setState({
+      tableData,
+    });
+  }
+
+  getCells(cells, rowIndex) {
     return cells.map((cell, index) => {
-      if (cell === true) {
-        return <td key={`${index}cell`}><input type="checkbox" /></td>;
+      if (typeof cell === 'boolean') {
+        return <td key={`${index}cell`}>
+          <input type="checkbox" onChange={this.selectRow(rowIndex, index)} checked={cell} />
+        </td>;
       } else if (typeof cell === 'string' && cell.includes('.png')) {
         return <td key={`${index}cell`}><img src={cell} alt="js logo" /></td>;
       }
@@ -56,7 +68,7 @@ class Table extends Component {
   getRows(rows) {
     return rows.map((row, index) =>
       <tr key={`${index}row`}>
-        {this.getCells(row)}
+        {this.getCells(row, index)}
       </tr>
     );
   }
@@ -76,6 +88,10 @@ class Table extends Component {
       tableData.forEach(row => {
         row[0] = String(Math.random());
       });
+    } else {
+      for (let i = 0; i < tableData.length - 1; i += 10) {
+        tableData[i][0] = String(Math.random());
+      }
     }
 
     this.setState({
@@ -109,6 +125,12 @@ class Table extends Component {
         >
           Change all texts
         </button>,
+          <button
+            key="changePartiallyTextsButton"
+            onClick={this.changeTexts()}
+          >
+            Change partially text
+          </button>,
         <div key="tableWithData" className="table-wrapper">
           {isVisible &&
             <table>
