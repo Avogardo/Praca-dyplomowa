@@ -3,17 +3,10 @@ import PropTypes from 'prop-types';
 import './Table.css';
 
 class Table extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isVisible: true,
-      tableData: [[]],
-    };
-
-    this.toggleTable = this.toggleTable.bind(this);
-    this.moveTableElement = this.moveTableElement.bind(this);
-    this.changeAllTexts = this.changeAllTexts.bind(this);
-  }
+  state = {
+    isVisible: true,
+    tableData: [[]],
+  };
 
   componentDidMount() {
     if (this.props.isBigTable) {
@@ -68,7 +61,7 @@ class Table extends Component {
     );
   }
 
-  moveTableElement() {
+  moveTableElement = () => {
     const { tableData } = this.state;
     const firstRow = tableData.shift();
     tableData.splice(1, 0, firstRow);
@@ -77,17 +70,20 @@ class Table extends Component {
     });
   }
 
-  changeAllTexts() {
+  changeTexts = (changeAll = false) => () => {
     const { tableData } = this.state;
-    tableData.forEach(row => {
-      row[0] = String(Math.random());
-    });
+    if (changeAll) {
+      tableData.forEach(row => {
+        row[0] = String(Math.random());
+      });
+    }
+
     this.setState({
       tableData,
     });
   }
 
-  toggleTable() {
+  toggleTable = () => {
     this.setState({ isVisible: !this.state.isVisible });
   }
 
@@ -108,8 +104,8 @@ class Table extends Component {
           {isVisible ? 'Hide' : 'Show'} table
         </button>,
         <button
-          key="changeAllTextsButton"
-          onClick={this.changeAllTexts}
+          key="changeTextsButton"
+          onClick={this.changeTexts(true)}
         >
           Change all texts
         </button>,
@@ -117,7 +113,7 @@ class Table extends Component {
           {isVisible &&
             <table>
               <tbody>
-              {this.getRows(tableData)}
+                {this.getRows(tableData)}
               </tbody>
             </table>
           }
