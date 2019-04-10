@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Table.css';
+import ButtonModel from "./ButtonModel";
 
 class Table extends Component {
   state = {
@@ -122,46 +123,32 @@ class Table extends Component {
     }
   }
 
+  renderButtons() {
+    const { isVisible } = this.state;
+    const buttons = [
+      new ButtonModel('moveRow', this.moveTableElement, 'Move row'),
+      new ButtonModel('showHideTableButton', this.toggleTable, `${isVisible ? 'Hide' : 'Show'} table`),
+      new ButtonModel('changeTextsButton', this.changeTexts(true), 'Change all texts'),
+      new ButtonModel('changePartiallyTextsButton', this.changeTexts(), 'Change partially text'),
+      new ButtonModel('removeRow', this.removeOrAddRow(true), 'Remove row'),
+      new ButtonModel('addRow', this.removeOrAddRow(), 'Add row'),
+    ];
+
+    return buttons.map(({ key, event, text}) => (
+      <button
+        key={key}
+        onClick={event}
+      >
+        {text}
+      </button>
+    ));
+  }
+
   render() {
     const { isVisible, tableData } = this.state;
     return (
       tableData[0].length ? [
-        <button
-          key="moveRow"
-          onClick={this.moveTableElement}
-        >
-          Move row
-        </button>,
-        <button
-          key="showHideTableButton"
-          onClick={this.toggleTable}
-        >
-          {isVisible ? 'Hide' : 'Show'} table
-        </button>,
-        <button
-          key="changeTextsButton"
-          onClick={this.changeTexts(true)}
-        >
-          Change all texts
-        </button>,
-        <button
-          key="changePartiallyTextsButton"
-          onClick={this.changeTexts()}
-        >
-          Change partially text
-        </button>,
-        <button
-          key="removeRow"
-          onClick={this.removeOrAddRow(true)}
-        >
-          Remove row
-        </button>,
-        <button
-          key="addRow"
-          onClick={this.removeOrAddRow()}
-        >
-          Add row
-        </button>,
+        this.renderButtons(),
         <div key="tableWithData" className="table-wrapper">
           {isVisible &&
             <table>
