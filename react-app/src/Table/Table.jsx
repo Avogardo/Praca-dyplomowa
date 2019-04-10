@@ -108,6 +108,17 @@ class Table extends Component {
       this.setState({
         tableData,
       });
+    } else {
+      const { tableData } = this.state;
+      tableData.unshift([
+        'Element added',
+        false,
+        60,
+        "https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png",
+      ]);
+      this.setState({
+        tableData,
+      });
     }
   }
 
@@ -140,10 +151,16 @@ class Table extends Component {
           Change partially text
         </button>,
         <button
-          key="removeOrAddRow"
+          key="removeRow"
           onClick={this.removeOrAddRow(true)}
         >
           Remove row
+        </button>,
+        <button
+          key="addRow"
+          onClick={this.removeOrAddRow()}
+        >
+          Add row
         </button>,
         <div key="tableWithData" className="table-wrapper">
           {isVisible &&
