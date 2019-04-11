@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './Table.css';
 import ButtonModel from "./ButtonModel";
+import './Table.css';
 
 class Table extends Component {
   state = {
