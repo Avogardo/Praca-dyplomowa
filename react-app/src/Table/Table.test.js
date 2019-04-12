@@ -85,4 +85,21 @@ describe('Table component', () => {
     rows = container.querySelectorAll('tr').length;
     expect(rows).toBe(0);
   });
+
+  it('change texts in all rows', () => {
+    act(() => {
+      ReactDOM.render(<Table isBigTable />, container);
+    });
+    const texts = [...container.querySelectorAll('tr')].map(row =>
+      row.querySelector('td').textContent);
+    const button = container.querySelectorAll('button')[2];
+
+    act(() => {
+      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+    });
+    const newTexts = [...container.querySelectorAll('tr')].map(row =>
+      row.querySelector('td').textContent);
+    const areNotEqual = newTexts.every((newText, index) => newText !== texts[index]);
+    expect(areNotEqual).toBe(true);
+  });
 });
