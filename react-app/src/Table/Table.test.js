@@ -1,5 +1,6 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import { act } from 'react-dom/test-utils';
 
 import ReactDOM from 'react-dom';
 import Table from './Table';
@@ -7,17 +8,26 @@ import Table from './Table';
 describe('Table component', () => {
   const testRenderer = TestRenderer.create(<Table isBigTable />);
   const testInstance = testRenderer.root;
+  let container;
+
+  beforeEach(() => {
+    container = document.createElement('div');
+    document.body.appendChild(container);
+  });
+
+  afterEach(() => {
+    document.body.removeChild(container);
+    container = null;
+  });
 
   it('renders without crashing with server data', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Table/>, div);
-    ReactDOM.unmountComponentAtNode(div);
+    ReactDOM.render(<Table/>, container);
+    ReactDOM.unmountComponentAtNode(container);
   });
 
   it('renders without crashing with big static data', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Table isBigTable/>, div);
-    ReactDOM.unmountComponentAtNode(div);
+    ReactDOM.render(<Table isBigTable/>, container);
+    ReactDOM.unmountComponentAtNode(container);
   });
 
   it('always renders a table element', () => {
@@ -30,5 +40,20 @@ describe('Table component', () => {
 
   it('always renders a 6 functional button elements', () => {
     expect(testInstance.findAllByType('button')).toHaveLength(6);
+  });
+
+  it('remove all rows on click hide rows button', () => {
+    act(() => {
+      ReactDOM.render(<Table isBigTable />, container);
+    });
+    const button = container.querySelectorAll('button')[1];
+    let rows = container.querySelectorAll('tr').length;
+    expect(rows).toBe(300);
+
+    act(() => {
+      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+    });
+    rows = container.querySelectorAll('tr').length;
+    expect(rows).toBe(0);
   });
 });
