@@ -42,6 +42,35 @@ describe('Table component', () => {
     expect(testInstance.findAllByType('button')).toHaveLength(6);
   });
 
+  it('replace first row with the second one', () => {
+    act(() => {
+      ReactDOM.render(<Table isBigTable />, container);
+    });
+    const button = container.querySelectorAll('button')[0];
+    const firstRowText = container
+      .querySelector('tr')
+      .querySelector('td')
+      .textContent;
+    const secondRowText = container
+      .querySelectorAll('tr')[1]
+      .querySelector('td')
+      .textContent;
+
+    act(() => {
+      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+    });
+    const newFirstRowText = container
+      .querySelector('tr')
+      .querySelector('td')
+      .textContent;
+    const newSecondRowText = container
+      .querySelectorAll('tr')[1]
+      .querySelector('td')
+      .textContent;
+    expect(newFirstRowText).toBe(secondRowText);
+    expect(newSecondRowText).toBe(firstRowText);
+  });
+
   it('remove all rows on click hide rows button', () => {
     act(() => {
       ReactDOM.render(<Table isBigTable />, container);
