@@ -23,4 +23,8 @@ describe('Table component', () => {
   it('always renders a table element', () => {
     expect(testInstance.findByType('table')).toBeDefined();
   });
+
+  it('always renders a table wrapper element', () => {
+    expect(testInstance.findByProps({className: 'table-wrapper'})).toBeDefined();
+  });
 });
