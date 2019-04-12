@@ -124,4 +124,32 @@ describe('Table component', () => {
     });
     expect(areEqual).toBe(true);
   });
+
+  it('remove one row on click remove row button', () => {
+    act(() => {
+      ReactDOM.render(<Table isBigTable />, container);
+    });
+    const button = container.querySelectorAll('button')[4];
+    const rowsLength = container.querySelectorAll('tr').length;
+
+    act(() => {
+      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+    });
+    const newRowsLength = container.querySelectorAll('tr').length;
+    expect(newRowsLength).toBe(rowsLength - 1);
+  });
+
+  it('add one row on click add row button', () => {
+    act(() => {
+      ReactDOM.render(<Table isBigTable />, container);
+    });
+    const button = container.querySelectorAll('button')[5];
+    const rowsLength = container.querySelectorAll('tr').length;
+
+    act(() => {
+      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+    });
+    const newRowsLength = container.querySelectorAll('tr').length;
+    expect(newRowsLength).toBe(rowsLength + 1);
+  });
 });
