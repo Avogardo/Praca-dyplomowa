@@ -25,7 +25,7 @@ describe('Table component', () => {
   });
 
   it('always renders a table wrapper element', () => {
-    expect(testInstance.findByProps({className: 'table-wrapper'})).toBeDefined();
+    expect(testInstance.findByProps({ className: 'table-wrapper' })).toBeDefined();
   });
 
   it('always renders a 6 functional button elements', () => {
