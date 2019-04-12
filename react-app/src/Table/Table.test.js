@@ -102,4 +102,26 @@ describe('Table component', () => {
     const areNotEqual = newTexts.every((newText, index) => newText !== texts[index]);
     expect(areNotEqual).toBe(true);
   });
+
+  it('change texts in every 10 rows', () => {
+    act(() => {
+      ReactDOM.render(<Table isBigTable />, container);
+    });
+    const texts = [...container.querySelectorAll('tr')].map(row =>
+      row.querySelector('td').textContent);
+    const button = container.querySelectorAll('button')[3];
+
+    act(() => {
+      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+    });
+    const newTexts = [...container.querySelectorAll('tr')].map(row =>
+      row.querySelector('td').textContent);
+    const areEqual = newTexts.every((newText, index) => {
+      if (index % 10 === 0) {
+        return newText !== texts[index];
+      }
+      return newText === texts[index];
+    });
+    expect(areEqual).toBe(true);
+  });
 });
