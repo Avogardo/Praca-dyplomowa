@@ -1,9 +1,11 @@
-<form *ngIf="inputs.length">
-  <input
-    *ngFor="let input of inputs"
-    [type]="input.type"
-    [(ngModel)]="input.text"
-    (click)="input.action()"
-    [name]="input.type"
-  >
-</form>
+<div class="form-wrapper">
+  <form *ngIf="inputs.length">
+    <input
+      *ngFor="let input of inputs"
+      [type]="input.type"
+      [(ngModel)]="input.text"
+      (click)="input.action()"
+      [name]="input.type"
+    >
+  </form>
+</div>
