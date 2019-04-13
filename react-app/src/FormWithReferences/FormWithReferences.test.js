@@ -37,6 +37,4 @@ describe('FormWithReferences component', () => {
       expect(testInstance.findByProps({ type: form.type })).toBeDefined();
     })
   });
-
-  // todo test of calling function on input change
 });
