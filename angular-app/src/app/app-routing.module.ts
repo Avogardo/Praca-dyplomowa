@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import FormWithBindingComponent from './form-with-binding/form-with-binding.component';
+import FormWithBindingComponent from './form/form-with-binding/form-with-binding.component';
 
 
 const routes: Routes = [
