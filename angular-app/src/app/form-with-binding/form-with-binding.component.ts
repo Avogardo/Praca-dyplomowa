@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-form-with-binding',
   templateUrl: './form-with-binding.component.html',
   styleUrls: ['./form-with-binding.component.scss'],
 })
