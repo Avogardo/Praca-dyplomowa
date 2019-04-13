@@ -1,3 +1,13 @@
-<p>
-  form-with-references works!
-</p>
+<div class="form-wrapper">
+  <form *ngIf="inputs.length">
+    <input
+      #inputElement
+      *ngFor="let input of inputs"
+      [name]="input.type"
+      [type]="input.type"
+      [value]="input.text"
+      (click)="input.action()"
+      (keyup)="onKeyAction()"
+    >
+  </form>
+</div>
