@@ -75,4 +75,6 @@ typings/
 # FuseBox cache
 .fusebox/
 react-app/.idea
+angular-app/.idea
+vue-app/.idea
 server/.idea
