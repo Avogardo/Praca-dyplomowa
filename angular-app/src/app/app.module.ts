@@ -7,12 +7,14 @@ import FormWithBindingComponent from './form/form-with-binding/form-with-binding
 import NavigationComponent from './navigation/navigation.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormService } from './form/form.service';
+import FormWithReferencesComponent from './form/form-with-references/form-with-references.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormWithBindingComponent,
     NavigationComponent,
+    FormWithReferencesComponent,
   ],
   imports: [
     BrowserModule,
