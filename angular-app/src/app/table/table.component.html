@@ -1,3 +1,21 @@
-<p>
-  table works!
-</p>
+<div *ngIf="tableData" class="table-wrapper">
+  <table>
+    <tbody>
+      <tr *ngFor="let row of tableData">
+        <td *ngFor="let cell of row">
+          <div *ngIf="cell === true || cell === false">
+            <input type="checkbox" [(ngModel)]="cell" />
+          </div>
+          <div *ngIf="isString(cell) && cell.includes('.png')">
+            <img [src]="cell" alt="js logo">
+          </div>
+          <div *ngIf="!(isString(cell) && cell.includes('.png')) && !(cell === true || cell === false)">
+            {{cell}}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p *ngIf="!tableData">loading...</p>

@@ -18,14 +18,14 @@ class Table extends Component {
             'This is first item',
             false,
             1,
-            "https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png",
+            'https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png',
           ]);
         } else {
           tableData.push([
             'title',
             false,
             54,
-            "https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png",
+            'https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png',
           ]);
         }
       }
