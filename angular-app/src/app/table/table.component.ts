@@ -19,31 +19,20 @@ export default class TableComponent implements OnInit {
     this.route.data
       .subscribe(({ bigTable }: { bigTable: boolean }) => {
         if (bigTable) {
-          const tableData = [];
-          for (let i = 0; i < 300; i++) { // 30000 is fine
-            if (i === 0) {
-              tableData.push([
-                'This is first item',
-                false,
-                1,
-                'https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png',
-              ]);
-            } else {
-              tableData.push([
-                'title',
-                false,
-                54,
-                'https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png',
-              ]);
-            }
-          }
-          this.tableData = tableData;
+          this.tableData = this.tableService.getBigTable();
         } else {
           this.tableService.getRows().subscribe((rows: TableData) => {
             this.tableData = rows.tableData;
           });
         }
       });
+  }
+
+  moveTableElement(): void {
+    const { tableData }: TableComponent = this;
+    const firstRow = tableData.shift();
+    tableData.splice(1, 0, firstRow);
+    this.tableData = tableData;
   }
 
   isString(element: any) {

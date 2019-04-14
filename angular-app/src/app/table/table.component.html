@@ -1,4 +1,5 @@
 <div *ngIf="tableData" class="table-wrapper">
+  <button (click)="moveTableElement()">Move row</button>
   <table>
     <tbody>
       <tr *ngFor="let row of tableData; let rowIndex = index">
