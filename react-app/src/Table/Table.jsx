@@ -103,19 +103,18 @@ class Table extends Component {
   }
 
   removeOrAddRow = (addRow = false) => () => {
+    const { tableData } = this.state;
     if (addRow) {
-      const { tableData } = this.state;
       tableData.shift();
       this.setState({
         tableData,
       });
     } else {
-      const { tableData } = this.state;
       tableData.unshift([
         'Element added',
         false,
         60,
-        "https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png",
+        'https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png',
       ]);
       this.setState({
         tableData,

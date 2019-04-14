@@ -54,6 +54,22 @@ export default class TableComponent implements OnInit {
     this.tableData = tableData;
   }
 
+  removeOrAddRow(addRow: boolean = false): void {
+    const { tableData }: TableComponent = this;
+    if (addRow) {
+      tableData.shift();
+      this.tableData = tableData;
+    } else {
+      tableData.unshift([
+        'Element added',
+        false,
+        60,
+        'https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png',
+      ]);
+      this.tableData = tableData;
+    }
+}
+
   isString(element: any) {
     return typeof element === 'string';
   }

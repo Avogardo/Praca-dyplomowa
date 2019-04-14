@@ -3,6 +3,8 @@
 <button (click)="toggleTable()">{{ isVisible ? 'Hide' : 'Show' }} table</button>
 <button (click)="changeTexts(true)">Change all texts</button>
 <button (click)="changeTexts()">Change partially text</button>
+<button (click)="removeOrAddRow(true)">Remove row text</button>
+<button (click)="removeOrAddRow()">Add row</button>
 <div *ngIf="tableData" class="table-wrapper">
   <table *ngIf="isVisible">
     <tbody>
