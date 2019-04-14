@@ -1,10 +1,10 @@
 <div *ngIf="tableData" class="table-wrapper">
   <table>
     <tbody>
-      <tr *ngFor="let row of tableData">
-        <td *ngFor="let cell of row">
+      <tr *ngFor="let row of tableData; let rowIndex = index">
+        <td *ngFor="let cell of row; let cellIndex = index">
           <div *ngIf="cell === true || cell === false">
-            <input type="checkbox" [(ngModel)]="cell" />
+            <input type="checkbox" [(ngModel)]="tableData[rowIndex][cellIndex]" />
           </div>
           <div *ngIf="isString(cell) && cell.includes('.png')">
             <img [src]="cell" alt="js logo">
