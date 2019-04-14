@@ -5,9 +5,10 @@ import { FormsModule } from '@angular/forms';
 import AppComponent from './app.component';
 import FormWithBindingComponent from './form/form-with-binding/form-with-binding.component';
 import NavigationComponent from './navigation/navigation.component';
+import FormWithReferencesComponent from './form/form-with-references/form-with-references.component';
+import TableComponent from './table/table.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormService } from './form/form.service';
-import FormWithReferencesComponent from './form/form-with-references/form-with-references.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import FormWithReferencesComponent from './form/form-with-references/form-with-r
     FormWithBindingComponent,
     NavigationComponent,
     FormWithReferencesComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
