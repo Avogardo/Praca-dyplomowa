@@ -10,7 +10,8 @@ import TableData from './table-data';
   styleUrls: ['./table.component.scss'],
 })
 export default class TableComponent implements OnInit {
-  tableData: Row[];
+  private tableData: Row[];
+  private isVisible: boolean = true;
 
   constructor(private tableService: TableService, private route: ActivatedRoute) {
   }
@@ -33,6 +34,10 @@ export default class TableComponent implements OnInit {
     const firstRow = tableData.shift();
     tableData.splice(1, 0, firstRow);
     this.tableData = tableData;
+  }
+
+  toggleTable(): void {
+    this.isVisible = !this.isVisible;
   }
 
   isString(element: any) {

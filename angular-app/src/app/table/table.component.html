@@ -1,6 +1,7 @@
 <div *ngIf="tableData" class="table-wrapper">
   <button (click)="moveTableElement()">Move row</button>
-  <table>
+  <button (click)="toggleTable()">{{ isVisible ? 'Hide' : 'Show' }} table</button>
+  <table *ngIf="isVisible">
     <tbody>
       <tr *ngFor="let row of tableData; let rowIndex = index">
         <td *ngFor="let cell of row; let cellIndex = index">
