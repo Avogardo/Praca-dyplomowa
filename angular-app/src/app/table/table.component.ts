@@ -40,6 +40,20 @@ export default class TableComponent implements OnInit {
     this.isVisible = !this.isVisible;
   }
 
+  changeTexts(changeAll: boolean = false): void {
+    const { tableData }: TableComponent = this;
+    if (changeAll) {
+      tableData.forEach(row => {
+        row[0] = String(Math.random());
+      });
+    } else {
+      for (let i = 0; i < tableData.length - 1; i += 10) {
+        tableData[i][0] = String(Math.random());
+      }
+    }
+    this.tableData = tableData;
+  }
+
   isString(element: any) {
     return typeof element === 'string';
   }
