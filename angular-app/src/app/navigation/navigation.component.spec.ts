@@ -22,4 +22,11 @@ describe('NavigationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('always renders a nav element', () => {
+    const fixture = TestBed.createComponent(NavigationComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('nav').textContent).toBeDefined();
+  });
 });
