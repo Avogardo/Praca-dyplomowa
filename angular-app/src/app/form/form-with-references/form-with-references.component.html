@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-  <form *ngIf="inputs.length">
+  <form *ngIf="inputs && inputs.length">
     <input
       #inputElement
       *ngFor="let input of inputs"

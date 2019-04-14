@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import FormWithReferencesComponent from './form-with-references.component';
+import { FormsModule } from '@angular/forms';
 
 describe('FormWithReferencesComponent', () => {
   let component: FormWithReferencesComponent;
@@ -8,7 +9,12 @@ describe('FormWithReferencesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormWithReferencesComponent ]
+      imports: [
+        FormsModule,
+      ],
+      declarations: [
+        FormWithReferencesComponent,
+      ],
     })
     .compileComponents();
   }));
