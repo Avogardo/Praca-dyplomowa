@@ -8,7 +8,7 @@ describe('NavigationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavigationComponent ]
+      declarations: [ NavigationComponent ],
     })
     .compileComponents();
   }));
@@ -28,5 +28,19 @@ describe('NavigationComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('nav').textContent).toBeDefined();
+  });
+
+  it('always renders a ul element', () => {
+    const fixture = TestBed.createComponent(NavigationComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('ul').textContent).toBeDefined();
+  });
+
+  it('always renders 5 link elements', () => {
+    const fixture = TestBed.createComponent(NavigationComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelectorAll('a').length).toBe(5);
   });
 });
