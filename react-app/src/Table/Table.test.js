@@ -57,7 +57,7 @@ describe('Table component', () => {
       .textContent;
 
     act(() => {
-      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+      button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
     const newFirstRowText = container
       .querySelector('tr')

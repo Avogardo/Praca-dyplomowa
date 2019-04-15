@@ -10,7 +10,7 @@ import TableData from './table-data';
   styleUrls: ['./table.component.scss'],
 })
 export default class TableComponent implements OnInit {
-  private tableData: Row[];
+   tableData: Row[];
   private isVisible: boolean = true;
 
   constructor(private tableService: TableService, private route: ActivatedRoute) {
