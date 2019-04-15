@@ -24,21 +24,18 @@ describe('NavigationComponent', () => {
   });
 
   it('always renders a nav element', () => {
-    const fixture = TestBed.createComponent(NavigationComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('nav').textContent).toBeDefined();
+    expect(compiled.querySelector('nav')).toBeDefined();
   });
 
   it('always renders a ul element', () => {
-    const fixture = TestBed.createComponent(NavigationComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('ul').textContent).toBeDefined();
+    expect(compiled.querySelector('ul')).toBeDefined();
   });
 
   it('always renders 5 link elements', () => {
-    const fixture = TestBed.createComponent(NavigationComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelectorAll('a').length).toBe(5);

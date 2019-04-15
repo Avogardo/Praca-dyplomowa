@@ -28,4 +28,10 @@ describe('FormWithBindingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('always renders a form wrapper', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.form-wrapper')).toBeDefined();
+  });
 });

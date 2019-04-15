@@ -1,9 +1,11 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import AppComponent from './app.component';
 import NavigationComponent from './navigation/navigation.component';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -14,12 +16,24 @@ describe('AppComponent', () => {
         NavigationComponent,
       ],
     }).compileComponents();
+    fixture = TestBed.createComponent(AppComponent);
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
+  });
+
+  it('always renders a Navigation component', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('app-navigation')).toBeDefined();
+  });
+
+  it('always renders a router component', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('router-outlet')).toBeDefined();
   });
 
   // it(`should have as title 'angular-app'`, () => {
