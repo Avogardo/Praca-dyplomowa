@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navigation />
-    <router-view :formsWithBinding="formsWithBinding" />
+    <router-view :formsWithBinding="formsWithBinding" :formsWithReferences="formsWithBinding" />
   </div>
 </template>
 
@@ -25,7 +25,8 @@
     data: function() {
       return {
         formsWithBinding: [],
-        text: 'werg',
+        formsWithReferences: [],
+        text: 'This is an input',
         number: 0,
       };
     },
@@ -38,11 +39,18 @@
         new FormModel(FormTypes.number, this.number),
         new FormModel(FormTypes.submit, "Submit", this.onSubmit),
       ];
+
+      this.formsWithReferences = [
+        new FormModel(FormTypes.text, 'This is an input'),
+        new FormModel(FormTypes.number, 0),
+        new FormModel(FormTypes.submit, "Submit", this.onSubmit),
+      ];
     },
     methods: {
       onSubmit: function (event) {
         event.preventDefault();
         console.log(this.formsWithBinding);
+        console.log(this.formsWithReferences);
       }
     },
   };
