@@ -17,7 +17,7 @@ const Navigation = () => (
         <Link to="/server-table">server table</Link>
       </li>
       <li>
-        <Link to="/big-table">server table</Link>
+        <Link to="/big-table">big table</Link>
       </li>
     </ul>
   </nav>

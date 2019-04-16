@@ -5,7 +5,7 @@
                 <router-link to="/">Home</router-link>
             </li>
             <li>
-                <router-link to="/form-with-states">form with states</router-link>
+                <router-link to="/form-with-binding">form with binding</router-link>
             </li>
             <li>
                 <router-link to="/form-with-references">form with references</router-link>
