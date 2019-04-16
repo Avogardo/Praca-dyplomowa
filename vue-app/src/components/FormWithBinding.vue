@@ -1,9 +1,13 @@
 <template>
-    <p>form is working</p>
+  <p>loaded</p>
 </template>
 
 <script>
 export default {
-    name: 'FormWithBinding',
+  name: 'FormWithBinding',
+  props: ['formsWithBinding'],
+  mounted: function() {
+    console.log(this.formsWithBinding);
+  },
 }
 </script>
