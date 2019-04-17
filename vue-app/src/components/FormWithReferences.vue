@@ -4,6 +4,7 @@
             <input
                 v-for="input in formsWithReferences"
                 ref="input"
+                :value="input.text"
                 :type="input.type"
                 v-on:click="input.action"
                 v-on:keyup="onKeyAction"
