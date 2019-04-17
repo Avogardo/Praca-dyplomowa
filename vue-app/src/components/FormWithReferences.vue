@@ -64,6 +64,7 @@
         this.$refs.input.forEach((element, index) => {
           this.formsWithReferences[index].text = element.value;
         });
+        this.$emit('changed', this.formsWithReferences);
       },
     },
   }

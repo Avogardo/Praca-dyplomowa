@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <Navigation />
-    <router-view :formsWithBinding="formsWithBinding" :formsWithReferences="formsWithBinding" />
+    <router-view
+      :formsWithBinding="formsWithBinding"
+      :formsWithReferences="formsWithBinding"
+      @changed="onChange"
+    />
   </div>
 </template>
 
@@ -47,11 +51,14 @@
       ];
     },
     methods: {
-      onSubmit: function (event) {
+      onSubmit: function(event) {
         event.preventDefault();
         console.log(this.formsWithBinding);
         console.log(this.formsWithReferences);
-      }
+      },
+      onChange: function(formsWithReferences) {
+        this.formsWithReferences = formsWithReferences;
+      },
     },
   };
 </script>
