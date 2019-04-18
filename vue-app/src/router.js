@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import Table from './components/Table';
 
 Vue.use(Router);
 
@@ -26,17 +27,12 @@ export default new Router({
   }, {
     path: '/server-table',
     name: 'Table',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "FormWithBinding" */ './components/Table.vue'),
+    component: Table,
+    props: { bigTable: false },
   }, {
     path: '/big-table',
     name: 'Table',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "FormWithBinding" */ './components/Table.vue'),
-     props: { bigTable: true }
+    component: Table,
+    props: { bigTable: true },
   }],
 });

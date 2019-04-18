@@ -1,8 +1,61 @@
 <template>
-    <p>table is working</p>
+    <div v-if="tableData" class="table-wrapper">
+        <table>
+            <tbody>
+                <tr v-for="(row, rowIndex) in tableData">
+                    <td v-for="(cell, cellIndex) in row">
+                        <div v-if="cell === true || cell === false">
+                            <input type="checkbox" v-bind:value="tableData[rowIndex][cellIndex]" />
+                        </div>
+                        <div v-else-if="typeof cell === 'string' && cell.includes('.png')">
+                            <img :src="cell" alt="js logo">
+                        </div>
+                        <div v-else="!(isString(cell) && cell.includes('.png')) && !(cell === true || cell === false)">
+                            {{ cell }}
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </template>
 
 <style lang="scss">
+    .table-wrapper {
+        max-height: 500px;
+        overflow: auto;
+    }
+
+    table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+
+        &:last-child {
+            padding: 0;
+        }
+    }
+
+    tr {
+        &:nth-child(even){
+            background-color: #f2f2f2;
+        }
+
+        &:hover {
+            background-color: #dddddd;
+        }
+    }
+
+    img {
+        height: 32px;
+        width: 32px;
+    }
 
 </style>
 
@@ -39,8 +92,8 @@ export default {
       }
       this.tableData = tableData;
     } else {
-      const reponse = await TableService.fetchTableData();
-      this.tableData = reponse.data.tableData;
+      const response = await TableService.fetchTableData();
+      this.tableData = response.data.tableData;
     }
   },
 }
