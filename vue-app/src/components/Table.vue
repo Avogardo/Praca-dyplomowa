@@ -5,7 +5,7 @@
                 <tr v-for="(row, rowIndex) in tableData">
                     <td v-for="(cell, cellIndex) in row">
                         <div v-if="cell === true || cell === false">
-                            <input type="checkbox" v-bind:value="tableData[rowIndex][cellIndex]" />
+                            <input type="checkbox" v-model="tableData[rowIndex][cellIndex]" />
                         </div>
                         <div v-else-if="typeof cell === 'string' && cell.includes('.png')">
                             <img :src="cell" alt="js logo">
@@ -56,7 +56,6 @@
         height: 32px;
         width: 32px;
     }
-
 </style>
 
 <script>
