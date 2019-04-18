@@ -1,6 +1,7 @@
 <template>
     <div v-if="tableData" class="table-wrapper">
-        <table>
+        <button :key="button.key" v-for="button in buttons" v-on:click="button.event()">{{ button.text }}</button>
+        <table v-if="isVisible">
             <tbody>
                 <tr v-for="(row, rowIndex) in tableData">
                     <td v-for="(cell, cellIndex) in row">
@@ -59,7 +60,8 @@
 </style>
 
 <script>
-import TableService from "../services/TableService";
+import TableService from '../services/TableService';
+import ButtonModel from './buttonModel';
 
 export default {
   name: 'Table',
@@ -67,6 +69,8 @@ export default {
   data: function() {
     return {
       tableData: [],
+      isVisible: true,
+      buttons: [],
     };
   },
   mounted: async function() {
@@ -93,6 +97,19 @@ export default {
     } else {
       const response = await TableService.fetchTableData();
       this.tableData = response.data.tableData;
+    }
+    this.buttons = [
+      // new ButtonModel('moveRow', this.moveTableElement, 'Move row'),
+      new ButtonModel('showHideTableButton', this.toggleTable, `${this.isVisible ? 'Hide' : 'Show'} table`),
+      // new ButtonModel('changeTextsButton', this.changeTexts(true), 'Change all texts'),
+      // new ButtonModel('changePartiallyTextsButton', this.changeTexts(), 'Change partially text'),
+      // new ButtonModel('removeRow', this.removeOrAddRow(true), 'Remove row'),
+      // new ButtonModel('addRow', this.removeOrAddRow(), 'Add row'),
+    ];
+  },
+  methods: {
+    toggleTable: function () {
+      this.isVisible = !this.isVisible;
     }
   },
 }
