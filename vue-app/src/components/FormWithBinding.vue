@@ -2,7 +2,8 @@
     <div class="form-wrapper">
         <form>
             <input
-                v-for="input in formsWithBinding"
+                v-for="(input, index) in formsWithBinding"
+                :key="`${input.text}${index}withBinding`"
                 :type="input.type"
                 v-model="input.text"
                 v-on:click="input.action"

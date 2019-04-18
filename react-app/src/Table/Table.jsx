@@ -106,9 +106,6 @@ class Table extends Component {
     const { tableData } = this.state;
     if (addRow) {
       tableData.shift();
-      this.setState({
-        tableData,
-      });
     } else {
       tableData.unshift([
         'Element added',
@@ -116,10 +113,10 @@ class Table extends Component {
         60,
         'https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png',
       ]);
-      this.setState({
-        tableData,
-      });
     }
+    this.setState({
+      tableData,
+    });
   }
 
   renderButtons() {

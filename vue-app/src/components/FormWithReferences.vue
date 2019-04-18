@@ -2,7 +2,8 @@
     <div class="form-wrapper">
         <form>
             <input
-                v-for="input in formsWithReferences"
+                v-for="(input, index) in formsWithReferences"
+                :key="`${input.text}${index}withReferences`"
                 ref="input"
                 :value="input.text"
                 :type="input.type"

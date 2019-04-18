@@ -1,10 +1,16 @@
 <template>
     <div v-if="tableData" class="table-wrapper">
-        <button :key="button.key" v-for="button in buttons" v-on:click="button.event()">{{ button.text }}</button>
+        <button
+            v-for="button in buttons"
+            :key="button.key"
+            v-on:click="button.event()"
+        >
+            {{ button.text }}
+        </button>
         <table v-if="isVisible">
             <tbody>
-                <tr v-for="(row, rowIndex) in tableData">
-                    <td v-for="(cell, cellIndex) in row">
+                <tr v-for="(row, rowIndex) in tableData" :key="`${rowIndex}row`">
+                    <td v-for="(cell, cellIndex) in row" :key="`${cellIndex}cell`">
                         <div v-if="cell === true || cell === false">
                             <input type="checkbox" v-model="tableData[rowIndex][cellIndex]" />
                         </div>
@@ -99,18 +105,55 @@ export default {
       this.tableData = response.data.tableData;
     }
     this.buttons = [
-      // new ButtonModel('moveRow', this.moveTableElement, 'Move row'),
+      new ButtonModel('moveRow', this.moveTableElement, 'Move row'),
       new ButtonModel('showHideTableButton', this.toggleTable, `${this.isVisible ? 'Hide' : 'Show'} table`),
-      // new ButtonModel('changeTextsButton', this.changeTexts(true), 'Change all texts'),
-      // new ButtonModel('changePartiallyTextsButton', this.changeTexts(), 'Change partially text'),
-      // new ButtonModel('removeRow', this.removeOrAddRow(true), 'Remove row'),
-      // new ButtonModel('addRow', this.removeOrAddRow(), 'Add row'),
+      new ButtonModel('changeTextsButton', this.changeAllTexts, 'Change all texts'),
+      new ButtonModel('changePartiallyTextsButton', this.changeTexts, 'Change partially text'),
+      new ButtonModel('removeRow', this.removeRow, 'Remove row'),
+      new ButtonModel('addRow', this.addRow, 'Add row'),
     ];
   },
   methods: {
     toggleTable: function () {
       this.isVisible = !this.isVisible;
-    }
+    },
+    moveTableElement: function () {
+      const { tableData } = this;
+      const firstRow = tableData.shift();
+      tableData.splice(1, 0, firstRow);
+      this.tableData = tableData;
+    },
+    changeTexts: function () {
+      const { tableData } = this;
+      for (let i = 0; i < tableData.length - 1; i += 10) {
+        tableData[i][0] = String(Math.random());
+      }
+      this.tableData = tableData;
+      this.buttons[2].key = `${this.buttons[2].key}o`;
+    },
+    changeAllTexts: function () {
+      const { tableData } = this;
+      tableData.forEach(row => {
+        row[0] = String(Math.random());
+      });
+      this.tableData = tableData;
+      this.buttons[3].key = `${this.buttons[3].key}p`;
+    },
+    removeRow: function () {
+      const { tableData } = this;
+      tableData.shift();
+      this.tableData = tableData;
+    },
+    addRow: function () {
+      const { tableData } = this;
+      tableData.unshift([
+        'Element added',
+        false,
+        60,
+        'https://referralrock.com/wp-content/uploads/2018/08/javascript-logo_small.png',
+      ]);
+      this.tableData = tableData;
+    },
   },
 }
 </script>
