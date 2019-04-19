@@ -11,7 +11,7 @@ describe('Navigation.vue', () => {
     const router = new VueRouter();
     wrapper = shallowMount(Navigation, {
       localVue,
-      router
+      router,
     });
   });
 

@@ -1,4 +1,5 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import VueRouter from 'vue-router';
 import App from '../../src/App';
 import Navigation from '../../src/views/Navigation';
 
@@ -6,7 +7,13 @@ describe('App.vue', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(App);
+    const localVue = createLocalVue();
+    localVue.use(VueRouter);
+    const router = new VueRouter();
+    wrapper = shallowMount(App, {
+      localVue,
+      router,
+    });
   });
 
   it('renders without crashing', () => {
@@ -22,6 +29,6 @@ describe('App.vue', () => {
   });
 
   it('always renders a router view element', () => {
-    expect(wrapper.find('router-view').exists()).toBe(true);
+    expect(wrapper.find('router-view')).toBeDefined();
   });
 });
