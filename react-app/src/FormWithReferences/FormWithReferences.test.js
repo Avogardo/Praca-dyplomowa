@@ -35,6 +35,6 @@ describe('FormWithReferences component', () => {
   it('always renders inputs with type as in form models', () => {
     formsWithProps.forEach((form) => {
       expect(testInstance.findByProps({ type: form.type })).toBeDefined();
-    })
+    });
   });
 });
