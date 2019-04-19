@@ -67,7 +67,7 @@
 
 <script>
 import TableService from '../services/TableService';
-import ButtonModel from './buttonModel';
+import ButtonModel from './ButtonModel';
 
 export default {
   name: 'Table',
