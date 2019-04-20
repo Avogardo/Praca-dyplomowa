@@ -47,4 +47,55 @@ describe('Table.vue', () => {
   it('always renders a 6 functional button elements', () => {
     expect(wrapper.findAll('button')).toHaveLength(6);
   });
+
+  it('replace first row with the second one', () => {
+    const firstRowText = wrapper.find('tr').find('td').text();
+    const secondRowText = wrapper.findAll('tr').at(1).find('td').text();
+    wrapper.find('button').trigger('click');
+    const newFirstRowText = wrapper.find('tr').find('td').text();
+    const newSecondRowText = wrapper.findAll('tr').at(1).find('td').text();
+    expect(newFirstRowText).toBe(secondRowText);
+    expect(newSecondRowText).toBe(firstRowText);
+  });
+
+  it('remove all rows on click hide rows button', () => {
+    expect(wrapper.findAll('tr').length).toBe(300);
+    wrapper.findAll('button').at(1).trigger('click');
+    expect(wrapper.findAll('tr').length).toBe(0);
+  });
+
+  it('change texts in all rows', () => {
+    const numberOfRows = 300;
+    const texts = [];
+    for (let i = 0; i < numberOfRows; i++) {
+      texts.push(wrapper.findAll('tr').at(i).text());
+    }
+    wrapper.findAll('button').at(2).trigger('click');
+    const newTexts = [];
+    for (let i = 0; i < numberOfRows; i++) {
+      newTexts.push(wrapper.findAll('tr').at(i).text());
+    }
+    const areNotEqual = newTexts.every((newText, index) => newText !== texts[index]);
+    expect(areNotEqual).toBe(true);
+  });
+
+  it('change texts in every 10 rows', () => {
+    const numberOfRows = 300;
+    const texts = [];
+    for (let i = 0; i < numberOfRows; i++) {
+      texts.push(wrapper.findAll('tr').at(i).text());
+    }
+    wrapper.findAll('button').at(3).trigger('click');
+    const newTexts = [];
+    for (let i = 0; i < numberOfRows; i++) {
+      newTexts.push(wrapper.findAll('tr').at(i).text());
+    }
+    const areEqual = newTexts.every((newText, index) => {
+      if (index % 10 === 0) {
+        return newText !== texts[index];
+      }
+      return newText === texts[index];
+    });
+    expect(areEqual).toBe(true);
+  });
 });
