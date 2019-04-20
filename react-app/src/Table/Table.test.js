@@ -80,7 +80,7 @@ describe('Table component', () => {
     expect(rows).toBe(300);
 
     act(() => {
-      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+      button.dispatchEvent(new MouseEvent('click', { bubbles: true}));
     });
     rows = container.querySelectorAll('tr').length;
     expect(rows).toBe(0);
@@ -95,7 +95,7 @@ describe('Table component', () => {
     const button = container.querySelectorAll('button')[2];
 
     act(() => {
-      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+      button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
     const newTexts = [...container.querySelectorAll('tr')].map(row =>
       row.querySelector('td').textContent);
@@ -112,7 +112,7 @@ describe('Table component', () => {
     const button = container.querySelectorAll('button')[3];
 
     act(() => {
-      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+      button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
     const newTexts = [...container.querySelectorAll('tr')].map(row =>
       row.querySelector('td').textContent);
@@ -133,7 +133,7 @@ describe('Table component', () => {
     const rowsLength = container.querySelectorAll('tr').length;
 
     act(() => {
-      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+      button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
     const newRowsLength = container.querySelectorAll('tr').length;
     expect(newRowsLength).toBe(rowsLength - 1);
@@ -147,7 +147,7 @@ describe('Table component', () => {
     const rowsLength = container.querySelectorAll('tr').length;
 
     act(() => {
-      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+      button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
     const newRowsLength = container.querySelectorAll('tr').length;
     expect(newRowsLength).toBe(rowsLength + 1);

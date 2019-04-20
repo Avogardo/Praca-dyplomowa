@@ -98,4 +98,18 @@ describe('Table.vue', () => {
     });
     expect(areEqual).toBe(true);
   });
+
+  it('remove one row on click remove row button', () => {
+    const rowsLength = wrapper.findAll('tr').length;
+    wrapper.findAll('button').at(4).trigger('click');
+    const newRowsLength = wrapper.findAll('tr').length;
+    expect(newRowsLength).toBe(rowsLength - 1);
+  });
+
+  it('add one row on click add row button', () => {
+    const rowsLength = wrapper.findAll('tr').length;
+    wrapper.findAll('button').at(5).trigger('click');
+    const newRowsLength = wrapper.findAll('tr').length;
+    expect(newRowsLength).toBe(rowsLength + 1);
+  });
 });
