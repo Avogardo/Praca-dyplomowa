@@ -66,7 +66,7 @@
 </style>
 
 <script>
-import TableService from '../services/TableService';
+import TableService from '../../services/TableService';
 import ButtonModel from './ButtonModel';
 
 export default {

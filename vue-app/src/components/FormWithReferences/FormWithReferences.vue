@@ -50,7 +50,7 @@
 </style>
 
 <script>
-  import FormTypes from '../FormTypes';
+  import FormTypes from '../../FormTypes';
 
   export default {
     name: 'FormWithReferences',

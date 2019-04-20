@@ -20,7 +20,7 @@
 </style>
 
 <script>
-  import Navigation from './views/Navigation.vue';
+  import Navigation from './views';
   import FormModel from './FormModel';
   import FormTypes from './FormTypes';
 

@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
-import Navigation from '../../src/views/Navigation';
+import Navigation from '../../src/views';
 
 describe('Navigation.vue', () => {
   let wrapper;
