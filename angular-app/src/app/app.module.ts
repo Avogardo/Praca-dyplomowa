@@ -9,8 +9,8 @@ import NavigationComponent from './navigation';
 import FormWithReferencesComponent from './form/form-with-references';
 import TableComponent from './table';
 import AppRoutingModule from './app-routing.module';
-import { FormService } from './form/form.service';
-import { TableService } from './table/table.service';
+import FormService from './form/form.service';
+import { TableService } from './table';
 
 @NgModule({
   declarations: [

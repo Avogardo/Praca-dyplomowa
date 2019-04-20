@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import FormModel from './form/FormModel';
 import FormTypes from './form/FormTypes';
-import { FormService } from './form/form.service';
+import FormService from './form/form.service';
 
 @Component({
   selector: 'app-root',

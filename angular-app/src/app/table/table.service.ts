@@ -7,7 +7,7 @@ import Row from './row.model';
 @Injectable({
   providedIn: 'root',
 })
-export class TableService {
+export default class TableService {
   constructor(private http: HttpClient) {
   }
 

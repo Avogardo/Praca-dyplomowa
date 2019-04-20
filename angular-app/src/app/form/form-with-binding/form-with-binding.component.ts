@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import FormModel from '../FormModel';
 import FormTypes from '../FormTypes';
-import { FormService } from '../form.service';
+import FormService from '../form.service';
 
 @Component({
   selector: 'app-form-with-binding',

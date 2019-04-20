@@ -4,7 +4,7 @@ import {
   QueryList,
   ViewChildren,
 } from '@angular/core';
-import { FormService } from '../form.service';
+import FormService from '../form.service';
 import FormTypes from '../FormTypes';
 import FormModel from '../FormModel';
 

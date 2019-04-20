@@ -4,7 +4,7 @@ import FormModel from './FormModel';
 @Injectable({
   providedIn: 'root'
 })
-export class FormService {
+export default class FormService {
   inputs: FormModel[];
 
   getInputs(): FormModel[] {

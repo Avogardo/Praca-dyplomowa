@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TableService } from './table.service';
+import TableService from './table.service';
 import Row from './row.model';
 import TableData from './table-data';
 

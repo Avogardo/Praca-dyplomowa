@@ -6,7 +6,7 @@ import TableComponent from './table.component';
 import FormWithBindingComponent from '../form/form-with-binding';
 import FormWithReferencesComponent from '../form/form-with-references';
 import AppRoutingModule from '../app-routing.module';
-import { TableService } from './table.service';
+import TableService from './table.service';
 
 describe('TableComponent', () => {
   let component: TableComponent;
