@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import AppComponent from './app.component';
-import FormWithBindingComponent from './form/form-with-binding/form-with-binding.component';
-import NavigationComponent from './navigation/navigation.component';
-import FormWithReferencesComponent from './form/form-with-references/form-with-references.component';
-import TableComponent from './table/table.component';
-import { AppRoutingModule } from './app-routing.module';
+import FormWithBindingComponent from './form/form-with-binding';
+import NavigationComponent from './navigation';
+import FormWithReferencesComponent from './form/form-with-references';
+import TableComponent from './table';
+import AppRoutingModule from './app-routing.module';
 import { FormService } from './form/form.service';
 import { TableService } from './table/table.service';
 

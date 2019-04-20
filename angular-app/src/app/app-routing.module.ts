@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import FormWithBindingComponent from './form/form-with-binding/form-with-binding.component';
-import FormWithReferencesComponent from './form/form-with-references/form-with-references.component';
-import TableComponent from './table/table.component';
 
+import FormWithBindingComponent from './form/form-with-binding';
+import FormWithReferencesComponent from './form/form-with-references';
+import TableComponent from './table';
 
 const routes: Routes = [
   { path: 'form-with-binding', component: FormWithBindingComponent },
@@ -14,6 +14,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export default class AppRoutingModule { }
