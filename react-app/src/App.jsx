@@ -61,20 +61,18 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navigation />
-          <div className="form-wrapper">
-            <Route
-              exact
-              path="/form-with-states"
-              render={(props) => <FormWithStates {...props} forms={formsWithStates} />}
-            />
-            <Route
-              exact
-              path="/form-with-references"
-              render={(props) =>
-                <FormWithReferences {...props} forms={formsWithProps} references={references}
-              />}
-            />
-          </div>
+          <Route
+            exact
+            path="/form-with-states"
+            render={(props) => <FormWithStates {...props} forms={formsWithStates} />}
+          />
+          <Route
+            exact
+            path="/form-with-references"
+            render={(props) =>
+              <FormWithReferences {...props} forms={formsWithProps} references={references}
+            />}
+          />
           <Route path="/server-table" render={(props) => <Table {...props} />} />
           <Route path="/big-table" render={(props) => <Table {...props} isBigTable />} />
         </div>

@@ -20,9 +20,11 @@ export default class FormWithStates extends Component {
   render() {
     const { forms } = this.props;
     return (
-      <form>
-        {this.renderForms(forms)}
-      </form>
+      <div className="form-wrapper">
+        <form>
+          {this.renderForms(forms)}
+        </form>
+      </div>
     );
   }
 }

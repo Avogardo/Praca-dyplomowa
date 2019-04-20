@@ -21,10 +21,6 @@ describe('Table component', () => {
     expect(testInstance.findByProps({ className: 'App' })).toBeDefined();
   });
 
-  it('always renders a form wrapper', () => {
-    expect(testInstance.findByProps({ className: 'form-wrapper' })).toBeDefined();
-  });
-
   it('always renders a Navigation component', () => {
     expect(testInstance.findByType(Navigation)).toBeDefined();
   });

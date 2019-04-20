@@ -22,6 +22,10 @@ describe('FormWithStates component', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
+  it('always renders a form wrapper', () => {
+    expect(testInstance.findByProps({ className: 'form-wrapper' })).toBeDefined();
+  });
+
   it('always renders a form element', () => {
     expect(testInstance.findByType('form')).toBeDefined();
   });

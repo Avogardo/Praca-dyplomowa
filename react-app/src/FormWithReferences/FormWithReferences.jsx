@@ -22,9 +22,11 @@ export default class FormWithReferences extends Component {
   render() {
     const { forms, references } = this.props;
     return (
+      <div className="form-wrapper">
         <form>
           {this.renderForms(forms, references)}
         </form>
+      </div>
     );
   }
 }
