@@ -12,7 +12,7 @@ describe('TableComponent', () => {
   let component: TableComponent;
   let fixture: ComponentFixture<TableComponent>;
   const tableData = [];
-  for (let i = 0; i < 300; i++) { // 30000 is fine
+  for (let i = 0; i < 5000; i++) {
     if (i === 0) {
       tableData.push([
         'This is first item',
@@ -116,7 +116,7 @@ describe('TableComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     const button = compiled.querySelectorAll('button')[1];
     let rows = compiled.querySelectorAll('tr').length;
-    expect(rows).toBe(300);
+    expect(rows).toBe(5000);
 
     button.click();
     fixture.detectChanges();
