@@ -59,13 +59,13 @@ describe('Table.vue', () => {
   });
 
   it('remove all rows on click hide rows button', () => {
-    expect(wrapper.findAll('tr').length).toBe(300);
+    expect(wrapper.findAll('tr').length).toBe(5000);
     wrapper.findAll('button').at(1).trigger('click');
     expect(wrapper.findAll('tr').length).toBe(0);
   });
 
   it('change texts in all rows', () => {
-    const numberOfRows = 300;
+    const numberOfRows = 5000;
     const texts = [];
     for (let i = 0; i < numberOfRows; i++) {
       texts.push(wrapper.findAll('tr').at(i).text());
@@ -80,7 +80,7 @@ describe('Table.vue', () => {
   });
 
   it('change texts in every 10 rows', () => {
-    const numberOfRows = 300;
+    const numberOfRows = 5000;
     const texts = [];
     for (let i = 0; i < numberOfRows; i++) {
       texts.push(wrapper.findAll('tr').at(i).text());

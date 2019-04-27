@@ -82,7 +82,7 @@ export default {
   mounted: async function() {
     if (this.bigTable) {
       const tableData = [];
-      for (let i = 0; i < 300; i++) { // 30000 is fine
+      for (let i = 0; i < 5000; i++) {
         if (i === 0) {
           tableData.push([
             'This is first item',
