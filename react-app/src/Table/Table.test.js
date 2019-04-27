@@ -77,7 +77,7 @@ describe('Table component', () => {
     });
     const button = container.querySelectorAll('button')[1];
     let rows = container.querySelectorAll('tr').length;
-    expect(rows).toBe(300);
+    expect(rows).toBe(5000);
 
     act(() => {
       button.dispatchEvent(new MouseEvent('click', { bubbles: true}));
