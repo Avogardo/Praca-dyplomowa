@@ -24,6 +24,12 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
+    it('always renders an App wrapper', () => {
+      fixture.detectChanges();
+      const compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('.App')).toBeDefined();
+    });
+
   it('always renders a Navigation component', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
