@@ -7,7 +7,7 @@ describe('FormWithBinding.vue', () => {
   let wrapper;
   const formsWithBinding = [
     new FormModel(FormTypes.text, 'This is an input'),
-    new FormModel(FormTypes.number, 0),
+    new FormModel(FormTypes.number, '0'),
     new FormModel(FormTypes.submit, "Submit"),
   ];
 
@@ -41,6 +41,12 @@ describe('FormWithBinding.vue', () => {
   it('always renders inputs with type as in form models', () => {
     formsWithBinding.forEach((form, index) => {
       expect(wrapper.findAll('input').at(index).attributes().type).toBe(form.type);
+    });
+  });
+
+  it('always renders inputs with value as in form models', () => {
+    formsWithBinding.forEach((form, index) => {
+      expect(wrapper.findAll('input').at(index).element.value).toBe(form.text);
     });
   });
 });
